@@ -1,0 +1,85 @@
+@CHARSET "ISO-8859-1";
+
+div#body
+	{
+		width: 100%;
+		height: 745px;
+		clear: both;
+		text-align: center;
+		font-family: "Segoe UI";
+		font-size: 1.3em;
+		color: white;
+		background-image: url("../Images/bgl.jpg");
+	}
+	
+div#bodyreg
+	{
+		width: 100%;
+		height: 745px;
+		clear: both;
+		font-family: "Segoe UI";
+		font-size: 1.3em;
+		color: white;
+		background-image: url("../Images/bgr.jpg");
+	}
+	
+input[type="text"],input[type="email"],input[type="tel"],input[type="password"],select.selectstyle {
+  display: block;
+  margin: 0;
+  width: 100%;
+  color:#8080c0;
+  font-size: 16px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 9px;
+}
+
+.erreurStar{
+	color: red;
+	font-size: 2em;
+}
+
+.erreurMessage{
+	color: red;
+}
+
+input[type="text"].inputstyle,input[type="password"].inputstyle,input[type="email"].inputstyle,input[type="tel"].inputstyle,select.selectstyle {
+  padding: 10px;
+  border: solid 5px #c9c9c9;
+  transition: border 0.3s;
+}
+input[type="text"]:focus,input[type="password"]:focus,input[type="email"]:focus,input[type="tel"]:focus,select:focus {
+  border: solid 5px #969696;
+}
+
+input[type=submit]{
+ font-size:medium;
+ font-weight:bold;
+ color:#0080c0;
+ height:2em;
+ box-shadow:1px 1px 1px #8080c0;
+ cursor:pointer;
+   border-radius: 9px;
+ 
+ }
+ 
+ input[type=submit]:hover{
+ background-color:#8080c0;
+ color:white;
+ }
+ 
+ 
+.btn-facebook{
+	background-color: #3b5998;
+	width: 200px;
+}
+
+.btn-google{
+	background-color: #DD4B39;
+	width: 200px;
+}
+
+.btn-linkedin{
+	background-color: #0e76a8;
+	width: 200px;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>INSCRIPTION</title>
+	<link rel="stylesheet" type="text/css" href="../Styles/Login_styles.css">
+	<link rel="stylesheet" type="text/css" href="../Styles/Styles.css">
+	<link rel="stylesheet" type="text/css" href="../Styles/bootstrap.css">
+	<link rel="stylesheet" href="../Styles/font-awesome.css">
+	
+	<script src="../js/angular.js"></script>
+	<script src="../js/app.js"></script>
+	<script src="../Controllers/regCtrl.js"></script>
+	<script src="../Directives/PasswordCheck.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="regCtrl">
+	<div id="menu1">
+		<ul>
+			<li><a href="../Pages/Home.html">Accueil</a></li>
+	        <li><a href="#">Apps</a></li>
+	        <li><a href="#">Tarifs</a></li>
+	        <li><a href="#">A propos</a></li>
+	        <li><a href="#">Blog</a></li>
+	        <li><a href="../Pages/Login.html">Connexion</a></li>
+	        <li><a href="../Pages/Register.html">Inscription</a></li>
+	        
+	    </ul>
+	</div>
+	
+	<div id="menu2">
+		<ul>
+			<li><a href="#">Contact</a></li>
+	        <li><a href="#"><img alt="FR" src="../Images/fr.gif"></a></li>
+	        <li><a href="#"><img alt="ENG" src="../Images/eng.gif"></a></li>
+	    </ul>
+	</div>
+	
+	<div id="bodyreg" align="center">
+	
+	<form name="regform" ng-submit="inputdata()" novalidate>
+	<table>
+		<tr><td colspan="3" align="center" width="600px" height="40px"><h2>INSCRIPTION</h2><td></tr>
+		<tr>
+			<td height="60px">Email</td>
+			<td><input type="email" id="email" name="email" class="inputstyle" ng-model="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" ng-required="true"></td>
+			<td><p ng-show="regform.email.$invalid && !regform.email.$pristine" class="erreurMessage">Email invalid</p></td>
+		</tr>
+		<tr>
+			<td height="60px">Login</td>
+			<td><input type="text" id="login" name="login" class="inputstyle" ng-model="login" ng-required="true"></td>
+			<td><p ng-show="regform.login.$touched && !regform.login.length && regform.login.$invalid && !regform.login.$error.usedlogin" class="erreurStar">*</p>
+				<p ng-show="regform.login.$error.usedlogin" class="erreurMessage">Login déjà utilisé</p></td>
+		</tr>
+		<tr>
+			<td height="60px">Mot de passe</td>
+			<td width="300"><input type="password" id="password" name="password" class="inputstyle" ng-model="pass" minlength="8" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/" ng-required="true"></td>
+			<td><p ng-show="regform.password.$dirty && regform.password.$invalid-minlength" class="erreurMessage">Au moins 8 caractères</p>
+			<p ng-show="!regform.password.$invalid-minlength" class="erreurMessage"><img src="../Images/success.png" width="18" height="18"></p>
+			<p ng-show="regform.password.$dirty && !regform.password.$valid-pattern" class="erreurMessage">Au moins 1 majuscule, 1 minuscule, 1 chiffre</p>
+			</td>
+		</tr>
+		<tr>
+			<td height="60px">Confirmer mot de passe</td>
+			<td><input type="password" id="cfpassword" name="cfpassword" class="inputstyle" ng-model="cfpass" ng-required="true" match="pass"></td>
+			<td><p class="erreurMessage" ng-show="regform.cfpassword.$dirty && regform.cfpassword.$error.mismatch"><img src="../Images/fail.png" width="18" height="18"></p>
+			<p class="erreurMessage" ng-show="!regform.cfpassword.$error.mismatch && regform.cfpassword.$dirty"><img src="../Images/success.png" width="18" height="18"></p>
+			</td>
+		</tr>
+		<tr>
+			<td height="60px">Taille de l'entreprise</td>
+			<td>
+				<select id="etstaille" name="etstaille" class="selectstyle" ng-model="etstaille" ng-required="true">
+					<option value="1">Moins de 2 personnes</option>
+					<option value="2">3 à 5 personnes</option>
+					<option value="3">5 à 10 personnes</option>
+					<option value="4">11 à 20 personnes</option>
+					<option value="5">21 à 30 personnes</option>
+					<option value="6">31 à 50 personnes</option>
+				</select>
+			</td>
+			<td><p ng-show="regform.etstaille.$touched && regform.etstaille.$invalid" class="erreurStar">*</p></td>
+		</tr>
+		<tr>
+			<td height="60px">Nom de l'entreprise</td>
+			<td><input type="text" id="etsname" name="etsname" class="inputstyle" ng-model="etsnom" ng-required="true"></td>
+			<td><p ng-show="regform.etsname.$touched && regform.etsname.$invalid" class="erreurStar">*</p></td>
+		</tr>
+		<tr>
+			<td height="60px">Pays</td>
+			<td><input type="text" id="pays" name="pays" class="inputstyle" ng-model="etspays" ng-required="true"></td>
+			<td><p ng-show="regform.pays.$touched && regform.pays.$invalid" class="erreurStar">*</p></td>
+		</tr>
+		<tr>
+			<td height="60px">Telephone</td>
+			<td><input type="tel" id="etsphone" name="etsphone" class="inputstyle" ng-model="etstel"></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td colspan="3" align="center" height="90px"><input type="submit" value="S'ENREGISTRER"></form>
+			<p ng-show="regform.$submitted && regform.$invalid" class="erreurMessage">Veuillez d'abord corriger le formulaire</p></td>
+		</tr>
+		<tr>
+			<td colspan="3" align="center" height="90px"><button class="btn btn-facebook"><i class="fa fa-facebook"></i> | S'incrire via Facebook</button> <button class="btn btn-linkedin"><i class="fa fa-linkedin"></i> | S'incrire via LinkedIn</button> <button class="btn btn-google"><i class="fa fa-google"></i> | S'incrire via Google+</button></td>
+		</tr>
+	</table>
+	
+	</div>
+	
+	
+	
+</body>
+</html>
